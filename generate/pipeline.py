@@ -13,12 +13,11 @@ class Pipeline:
         self.custom_model_path = Path(__file__).parent.joinpath("model")
         self.stable_diffusion_checkpoint = "runwayml/stable-diffusion-v1-5"
         self.controlnet_checkpoints = {'Canny': 'lllyasviel/sd-controlnet-canny', 
-                                       'MiDaS': 'lllyasviel/sd-controlnet-depth'}
-        
-        #self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+                                       'MiDaS': 'lllyasviel/sd-controlnet-depth'}        
         self.width = 512
         self.height = 512
 
+        # configure device
         if torch.backends.mps.is_available():
           self.device = torch.device("mps")
         elif torch.cuda.is_available():
@@ -26,7 +25,8 @@ class Pipeline:
         else:
           self.device = torch.device("cpu")
 
-        self.torch_dtype=torch.float32 if str(self.device) == 'mps' else torch.float16
+        # set pipeline
+        self.torch_dtype = torch.float32 if str(self.device) == 'mps' else torch.float16
         self.pipe = self.load_controlnet() if self.args.controlnet else self.load_stable_diffusion()
 
     def generate(self):
