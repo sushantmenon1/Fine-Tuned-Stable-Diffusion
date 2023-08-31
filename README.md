@@ -12,7 +12,12 @@ In addition, the application can train new artistic styles that can be applied t
 
 ## Installation 
 
-Clone this repository: git clone https://github.com/user/image-generation
+1. Installing `loralib` is simply
+```bash
+pip install loralib
+# Alternatively
+# pip install git+https://github.com/microsoft/LoRA
+```
 
 ## TO-DOs
 
