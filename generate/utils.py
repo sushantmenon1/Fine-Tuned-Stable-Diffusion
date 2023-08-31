@@ -20,6 +20,7 @@ def write_to_text_file(path, data):
         for i in data:
             f.write(str(i)+'\n')
 
+# https://huggingface.co/diffusers/controlnet-canny-sdxl-1.0-small
 def preprocess_canny(path):
     image = load_image(path)
     image = np.array(image)

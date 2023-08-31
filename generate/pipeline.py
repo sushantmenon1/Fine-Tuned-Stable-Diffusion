@@ -1,7 +1,8 @@
 import torch
-from .utils import preprocess_canny, write_to_text_file
 
 from pathlib import Path
+from .utils import preprocess_canny, write_to_text_file
+# all the pipeline wrappers are taken from the HuggingFace's Diffusers library, see https://github.com/huggingface/diffusers
 from diffusers import StableDiffusionPipeline, StableDiffusionSAGPipeline, ControlNetModel, StableDiffusionControlNetPipeline, logging
 from diffusers.utils import load_image
 
@@ -80,7 +81,7 @@ class Pipeline:
             
         return image
         
-
+    # https://github.com/pcuenca/diffusers-examples/blob/main/notebooks/stable-diffusion-seeds.ipynb
     def generate_latents(self):
         generator = torch.Generator(device=self.device)
         if not self.args.seed:

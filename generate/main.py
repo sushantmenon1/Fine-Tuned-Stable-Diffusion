@@ -11,13 +11,13 @@ logging.root.setLevel(logging.INFO)
 
 def generate():
     parser = argparse.ArgumentParser(description='A utility package to generate images from texts')
-    parser.add_argument('-p', '--prompt', type=str, required=True, help='Text prompt')
-    parser.add_argument('-s', '--seed', type=str, default=None, help='Seed for randomness')
-    parser.add_argument('-n', '--num_images', type=int, default=1, help='Number of images')
-    parser.add_argument('-i', '--init_image', type=str, default=None, help='Initial image for controlnet')
-    parser.add_argument('-c', '--controlnet', type=str, default=None, choices=['Canny', 'HED', 'MiDaS', 'OpenPose'], help='ControlNet type')
-    parser.add_argument('--style', type=int, default=0, help='Use custom style model')
-    parser.add_argument('--sag_scale', type=float, default=0, help='SAG scale factor')
+    parser.add_argument('-p', '--prompt', type=str, required=True, help='Prompts for generating Images. Can be a string or a text file')
+    parser.add_argument('-s', '--seed', type=str, default=None, help='Setting seeds for reproducibilty. If None generated_seeds.txt will be generated in the Results Folder. Can be an integer or a text file. Number of seeds must match the -n/--num_images parameter')
+    parser.add_argument('-n', '--num_images', type=int, default=1, help='Number of Images to generate per prompt')
+    parser.add_argument('-i', '--init_image', type=str, default=None, help='Image path for ContolNet. Used if ControlNet is used')
+    parser.add_argument('-c', '--controlnet', type=str, default=None, choices=['Canny', 'MiDaS'], help='Type of ControlNet to use. Choices are Canny and MiDaS')
+    parser.add_argument('--style', type=int, default=0, help='If 1, a trained style model (Kerala Murals) will be used for generating Images')
+    parser.add_argument('--sag_scale', type=float, default=0, help='Self Attention Guidance (ranges between 0 and 1)')
     args = parser.parse_args()
 
     # download models if they don't exist
