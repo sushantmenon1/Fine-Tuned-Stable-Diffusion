@@ -1,4 +1,7 @@
-# Image Generation using Stable Diffusion
+# Image Generation using Stable Diffusion <a target="_blank" href="https://colab.research.google.com/github/https://colab.research.google.com/drive/1nea9S_3uMRLkMDjfaLNv5fzHSUHSZovu?usp=sharing">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 
 This command line application provides a convenient interface for generating images via artificial intelligence. It harnesses the power of Stable Diffusion, a leading AI system for text-to-image generation, in an easy-to-use package.
 
@@ -122,12 +125,9 @@ I chose to train a Kerala mural painting style for this image generation project
 
 ## TO-DOs
 
-1. Complete README.md (Installation, Usage, Arguments, Advanced Usage, Acknowledgements)
-2. Polish -help in `main.py`
-3. Polish comments (give credit to borrowed code / library)
-4. Add doctrings to functions
-5. Polish and commit notebook
-6. Test release on macos
-7. Test release on Windows
-8. Model improvement
-9. Submit
+1. Add doctrings to functions
+2. Polish and commit notebook
+3. Test release on macos
+4. Test release on Windows
+5. Model improvement
+6. Submit
