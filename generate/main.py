@@ -1,9 +1,12 @@
+import logging
 import argparse
 
 from pathlib import Path
 from .pipeline import Pipeline
-from .utils import read_from_text_file
+from .utils import read_from_text_file, download_models
 
+# set up logger
+logging.basicConfig(format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 def generate():
     parser = argparse.ArgumentParser(description='A utility package to generate images from texts')
@@ -16,6 +19,13 @@ def generate():
     parser.add_argument('--sag_scale', type=float, default=0, help='SAG scale factor')
     args = parser.parse_args()
 
+    # download models if they don't exist
+    model_dir = Path(__file__).parent.joinpath("model")
+    if not model_dir.exists():
+        logging.info('Pulling model weights')
+        model_dir.mkdir()
+        download_models(model_dir)
+    
     # get prompt
     if Path(args.prompt).is_file():
         args.prompt = read_from_text_file(args.prompt)
@@ -46,9 +56,11 @@ def generate():
 
     # generate
     pipe = Pipeline(args)
+    logging.info('Generating images')
     generated_images = pipe.generate()
 
     # save images to disk
+    logging.info(f'Saving generated images to {output_dir}')
     for i, (prompt, images) in enumerate(generated_images.items()):
         prompt_dir = output_dir.joinpath(f"{i}_{prompt}")
         prompt_dir.mkdir(parents=True, exist_ok=True)

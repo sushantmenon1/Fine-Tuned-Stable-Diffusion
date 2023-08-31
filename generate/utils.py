@@ -30,3 +30,16 @@ def preprocess_canny(path):
     canny_image = Image.fromarray(image)
     canny_image = canny_image.resize((512,512))
     return canny_image
+
+def download_models(model_dir):
+    # download weights
+    subprocess.run(['curl', 
+                    'https://storage.googleapis.com/playground-sushant-eefk/custom%20model/pytorch_custom_diffusion_weights.bin', 
+                    '-o', 
+                    model_dir.joinpath('pytorch_custom_diffusion_weights.bin')])
+
+    # download encodings
+    subprocess.run(['curl', 
+                    'https://storage.googleapis.com/playground-sushant-eefk/custom%20model/kerala.bin', 
+                    '-o', 
+                    model_dir.joinpath('kerala.bin')])
