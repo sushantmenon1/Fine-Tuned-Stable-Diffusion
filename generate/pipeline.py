@@ -26,7 +26,8 @@ class Pipeline:
           self.device = torch.device("cpu")
 
         # set pipeline
-        self.torch_dtype = torch.float32 if str(self.device) == 'mps' else torch.float16
+        self.torch_dtype = torch.float32 
+        # if str(self.device) == 'mps' else torch.float16
         self.pipe = self.load_controlnet() if self.args.controlnet else self.load_stable_diffusion()
 
     def generate(self):
