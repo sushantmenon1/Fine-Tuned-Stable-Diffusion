@@ -39,9 +39,9 @@ class Pipeline:
             if self.args.sag_scale:
                 kwargs['sag_scale'] = self.args.sag_scale
 
-            with torch.autocast(str(self.device)):
-                images = self.pipe(**kwargs)["images"]
-                generated_images[prompt] = images
+            #with torch.autocast(str(self.device)):
+            images = self.pipe(**kwargs)["images"]
+            generated_images[prompt] = images
 
         return generated_images
 
