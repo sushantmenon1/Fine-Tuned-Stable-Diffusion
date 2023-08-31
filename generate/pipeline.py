@@ -26,8 +26,7 @@ class Pipeline:
           self.device = torch.device("cpu")
 
         # set pipeline
-        self.torch_dtype = torch.float32 
-        # if str(self.device) == 'mps' else torch.float16
+        self.torch_dtype = torch.float32 if str(self.device) == 'mps' else torch.float16
         self.pipe = self.load_controlnet() if self.args.controlnet else self.load_stable_diffusion()
 
     def generate(self):
@@ -40,8 +39,12 @@ class Pipeline:
             if self.args.sag_scale:
                 kwargs['sag_scale'] = self.args.sag_scale
 
-            #with torch.autocast(str(self.device)):
-            images = self.pipe(**kwargs)["images"]
+            # support mps backend (float32)
+            if str(self.device) == 'mps':
+                images = self.pipe(**kwargs)["images"]
+            else:
+                with torch.autocast(str(self.device)):
+                    images = self.pipe(**kwargs)["images"]
             generated_images[prompt] = images
 
         return generated_images
