@@ -1,5 +1,5 @@
 # Image Generation using Stable Diffusion 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/link-to-your-notebook](https://colab.research.google.com/drive/1nea9S_3uMRLkMDjfaLNv5fzHSUHSZovu?usp=sharing))
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1nea9S_3uMRLkMDjfaLNv5fzHSUHSZovu?usp=sharing)
 
 This command line application provides a convenient interface for generating images via artificial intelligence. It harnesses the power of Stable Diffusion, a leading AI system for text-to-image generation, in an easy-to-use package.
 
