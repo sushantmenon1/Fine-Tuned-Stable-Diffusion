@@ -1,4 +1,5 @@
-# Image Generation using Stable Diffusion
+# Image Generation using Stable Diffusion 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1nea9S_3uMRLkMDjfaLNv5fzHSUHSZovu?usp=sharing)
 
 This command line application provides a convenient interface for generating images via artificial intelligence. It harnesses the power of Stable Diffusion, a leading AI system for text-to-image generation, in an easy-to-use package.
 
@@ -7,6 +8,8 @@ The application can be installed on a computer and invoked from the command line
 Under the hood, the application runs the text-to-image diffusion process using Stable Diffusion 1.5. This produces high-quality images from the text prompts. The application also utilizes advanced techniques like Self-Attention Guidance and ControlNets to further refine the output.
 
 The interface makes it simple to generate images either using the base Stable Diffusion model or with an original artistic style (Kerala Murals).
+
+![compare_results](https://github.com/sushantmenon1/generate/assets/74258021/f80eccf1-1a11-4a59-89c3-c8e1ded85400)
 
 ## Installation 
 
@@ -119,15 +122,3 @@ I chose to train a Kerala mural painting style for this image generation project
 ## Acknowledgements
 - Diffusion Models from HuggingFace
 - Vermillio - This application was built as a task for Vermillio
-
-## TO-DOs
-
-1. Complete README.md (Installation, Usage, Arguments, Advanced Usage, Acknowledgements)
-2. Polish -help in `main.py`
-3. Polish comments (give credit to borrowed code / library)
-4. Add doctrings to functions
-5. Polish and commit notebook
-6. Test release on macos
-7. Test release on Windows
-8. Model improvement
-9. Submit
