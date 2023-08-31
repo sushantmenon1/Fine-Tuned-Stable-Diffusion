@@ -14,10 +14,19 @@ class Pipeline:
         self.stable_diffusion_checkpoint = "runwayml/stable-diffusion-v1-5"
         self.controlnet_checkpoints = {'Canny': 'lllyasviel/sd-controlnet-canny', 
                                        'MiDaS': 'lllyasviel/sd-controlnet-depth'}
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        #self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.width = 512
         self.height = 512
         self.pipe = self.load_controlnet() if self.args.controlnet else self.load_stable_diffusion()
+
+        if torch.backends.mps.is_available():
+          self.device = torch.device("mps")
+        elif torch.cuda.is_available():
+          self.device = torch.device("cuda")
+        else:
+          self.device = torch.device("cpu")
+
+        self.torch_dtype=torch.float32 if str(self.device) == 'mps' else torch.float16
 
     def generate(self):
         latents = self.generate_latents()
@@ -55,11 +64,11 @@ class Pipeline:
     def load_stable_diffusion(self):
         if self.args.sag_scale:
             pipe = StableDiffusionSAGPipeline.from_pretrained(self.stable_diffusion_checkpoint, 
-                                                              torch_dtype=torch.float16, 
+                                                              torch_dtype=self.torch_dtype, 
                                                               use_safetensors=True)
         else:
              pipe = StableDiffusionPipeline.from_pretrained(self.stable_diffusion_checkpoint, 
-                                                            torch_dtype=torch.float16, 
+                                                            torch_dtype=self.torch_dtype, 
                                                             use_safetensors=True)
         
         if self.args.style:
