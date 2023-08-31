@@ -7,7 +7,7 @@ from .utils import read_from_text_file, download_models
 
 # set up logger
 logging.basicConfig(format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
-logging.setLevel(logging.INFO)
+logging.root.setLevel(logging.INFO)
 
 def generate():
     parser = argparse.ArgumentParser(description='A utility package to generate images from texts')
