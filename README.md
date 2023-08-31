@@ -29,7 +29,7 @@ generate --prompt=$PROMPT_DIR --seed=1337
 ```
 All the images will be saved in a created "Results" folder in the current working directory.
 
-### Creating Multiple Images per prompt
+### Creating multiple images per prompt
 You can generate multiple images for each prompt using the following command
 ```bash
 export SEED_PATH="path-to-seed-file"
@@ -42,7 +42,7 @@ generate --prompt=$PROMPT_DIR -n=4 --seed=$SEED_PATH
 
 |   | parameter                 | Description | 
 |---|---------------------------|-----------------------|
-|   | -p/--prompt | Prompts for generating Images. Can be a string or a text file.|
+|   | -p/--prompt | Prompts for generating Images. Can be a string or a text file|
 |   | -s/--seed  | Setting seeds for reproducibilty. If None generated_seeds.txt will be generated in the Results Folder. Can be an integer or a text file. Number of seeds must match the -n/--num_images parameter|
 |   | -n/--num_images    | Number of Images to generate per prompt| 
 |   | -i/--init_image    | Image path for ContolNet. Used if ControlNet is used|
@@ -59,14 +59,14 @@ For this project, I chose to train a new artistic style based on Kerala Mural pa
 |:----------------------:|:----------------------:|
 |      SD 1.5     |      Style     |
 
-***Both these images were generate using the same prompt "a village by the sea" with the same seed (1337)***
+***Both these images were generated using the same prompt "a village by the sea" with the same seed (1337)***
 
-Here is how you can Implement the Kerala Mural Painting Style Model.
+Here is how you use Kerala Mural Painting Style Model with `generate`.
 ```bash
 generate --prompt=$PROMPT_DIR -n=4 --style=1
 ```
 
-### Control Net
+### ControlNet
 For enhanced control over the image generation process, I utilized two different ControlNets - Canny and MiDaS. 
 
 Canny applies edge detection to locate and sharpen edges in the output image. This helps create well-defined outlines and crisp detailing. 
@@ -75,7 +75,7 @@ MiDaS stands for Monocular Depth Estimation. It adds a sense of depth and perspe
 
 Using these two ControlNets in conjunction allows for images with sharp edges and realistic depth. The Canny edges prevent blurring while the MiDaS depth introduces complex perspective and 3D appearance. 
 
-Here is how you can use the ControlNet
+Here is how you can use the ControlNet with `generate`
 ```bash
 export IMAGE_PATH="path-to-image"
 
@@ -87,10 +87,10 @@ export IMAGE_PATH="path-to-image"
 
 generate --prompt=$PROMPT_DIR -n=4 --controlnet="MiDaS" --init_image=IMAGE_PATH
 ```
-#### Note: Make sure to pass the directory of an Image in --init_image parameter for the ControlNet to use
+#### Note: Make sure to pass the directory of an image in `--init_image` parameter for the ControlNet to use
 
 ### ControlNet with Style Model
-You can also use the controlnet with the Style Model using this code
+You can also use the ControlNet with the Style Model
 ```bash
 export IMAGE_PATH="path-to-image"
 
@@ -107,7 +107,7 @@ This helps generate sharper, more coherent images. The model can use the attenti
 
 Implementing SAG requires training the model to take in both the text prompt and attention guidance images at each diffusion step. At inference time, appropriate guidance images that match the prompt can make the output imagery more detailed.
 
-Here is how you can implement SAG
+Here is how you can use SAG with `generate`
 ```bash
 generate --prompt=$PROMPT_DIR -n=4 --sag_scale=0.75
 ```
