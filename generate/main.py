@@ -7,7 +7,6 @@ from .utils import read_from_text_file
 
 def generate():
     parser = argparse.ArgumentParser(description='A utility package to generate images from texts')
-    
     parser.add_argument('-p', '--prompt', type=str, required=True, help='Text prompt')
     parser.add_argument('-s', '--seed', type=str, default=None, help='Seed for randomness')
     parser.add_argument('-n', '--num_images', type=int, default=1, help='Number of images')
@@ -15,7 +14,6 @@ def generate():
     parser.add_argument('-c', '--controlnet', type=str, default=None, choices=['Canny', 'HED', 'MiDaS', 'OpenPose'], help='ControlNet type')
     parser.add_argument('--style', type=int, default=0, help='Use custom style model')
     parser.add_argument('--sag_scale', type=float, default=0, help='SAG scale factor')
-    
     args = parser.parse_args()
 
     # get prompt

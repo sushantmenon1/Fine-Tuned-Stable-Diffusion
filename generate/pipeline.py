@@ -9,7 +9,7 @@ from diffusers.utils import load_image
 class Pipeline:
     def __init__(self, args):
         self.args = args
-        self.custom_model_path = Path(__file__).parent.joinpath("Custom Model")
+        self.custom_model_path = Path(__file__).parent.joinpath("model")
         self.stable_diffusion_checkpoint = "runwayml/stable-diffusion-v1-5"
         self.controlnet_checkpoints = {'Canny': 'lllyasviel/sd-controlnet-canny', 
                                        'MiDaS': 'lllyasviel/sd-controlnet-depth'}
@@ -59,8 +59,7 @@ class Pipeline:
         else:
              pipe = StableDiffusionPipeline.from_pretrained(self.stable_diffusion_checkpoint, 
                                                             torch_dtype=torch.float16, 
-                                                            use_safetensors=True,
-                                                            verbose=False)
+                                                            use_safetensors=True)
         
         if self.args.style:
             pipe.unet.load_attn_procs(self.custom_model_path, 
