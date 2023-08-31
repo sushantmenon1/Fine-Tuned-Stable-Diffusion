@@ -122,12 +122,3 @@ I chose to train a Kerala mural painting style for this image generation project
 ## Acknowledgements
 - Diffusion Models from HuggingFace
 - Vermillio - This application was built as a task for Vermillio
-
-## TO-DOs
-
-1. Add doctrings to functions
-2. Polish and commit notebook
-3. Test release on macos
-4. Test release on Windows
-5. Model improvement
-6. Submit
