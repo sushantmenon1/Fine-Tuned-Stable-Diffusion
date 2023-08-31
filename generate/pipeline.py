@@ -14,10 +14,10 @@ class Pipeline:
         self.stable_diffusion_checkpoint = "runwayml/stable-diffusion-v1-5"
         self.controlnet_checkpoints = {'Canny': 'lllyasviel/sd-controlnet-canny', 
                                        'MiDaS': 'lllyasviel/sd-controlnet-depth'}
+        
         #self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.width = 512
         self.height = 512
-        self.pipe = self.load_controlnet() if self.args.controlnet else self.load_stable_diffusion()
 
         if torch.backends.mps.is_available():
           self.device = torch.device("mps")
@@ -27,6 +27,7 @@ class Pipeline:
           self.device = torch.device("cpu")
 
         self.torch_dtype=torch.float32 if str(self.device) == 'mps' else torch.float16
+        self.pipe = self.load_controlnet() if self.args.controlnet else self.load_stable_diffusion()
 
     def generate(self):
         latents = self.generate_latents()
@@ -48,6 +49,7 @@ class Pipeline:
         self.controlnet_name = self.controlnet_checkpoints[self.args.controlnet]
         controlnet = ControlNetModel.from_pretrained(self.controlnet_name)
         pipe = StableDiffusionControlNetPipeline.from_pretrained(self.stable_diffusion_checkpoint, 
+                                                                 torch_dtype=self.torch_dtype,
                                                                  controlnet=controlnet)
 
         if self.args.style:
