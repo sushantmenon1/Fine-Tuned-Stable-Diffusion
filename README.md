@@ -9,6 +9,8 @@ Under the hood, the application runs the text-to-image diffusion process using S
 
 The interface makes it simple to generate images either using the base Stable Diffusion model or with an original artistic style (Kerala Murals).
 
+![compare_results](https://github.com/sushantmenon1/generate/assets/74258021/f80eccf1-1a11-4a59-89c3-c8e1ded85400)
+
 ## Installation 
 
 Installing `generate` is simply
