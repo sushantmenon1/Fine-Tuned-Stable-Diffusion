@@ -112,7 +112,8 @@ Here is how you can use SAG with `generate`
 generate --prompt=$PROMPT_DIR -n=4 --sag_scale=0.75
 ```
 ## Data
-I collected Kerala Mural images from the net to fine-tune the base Stable Diffusion Model. They can be found here `gs://playground-sushant-eefk/Kerala Mural Paintings`
+I collected Kerala Mural images from the net to fine-tune the base Stable Diffusion Model. They can be found here `gs://playground-sushant-eefk/Kerala Mural Paintings`.
+
 I chose to train a Kerala mural painting style for this image generation project for a few key reasons:
 - I have a personal connection to Kerala being originally from there, so I wanted to incorporate this cultural heritage into the AI model. Kerala murals are a unique artform from my home state.
 - The vivid colors, intricate patterns, and flowing forms of Kerala mural art provide great visual material for developing a distinctive aesthetic. I felt this would translate well to a learned artistic style.
