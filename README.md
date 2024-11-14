@@ -121,5 +121,5 @@ I chose to train a Kerala mural painting style for this image generation project
 - Kerala mural paintings are not as universally known compared to Western art styles. I hoped training an AI style transfer on them would help highlight and preserve elements of this important cultural tradition through an emergent technology.
 
 ## Acknowledgements
-- Diffusion Models from HuggingFace
-- Vermillio - This application was built as a task for Vermillio
+- Diffusion Models from HuggingFace.
+- Vermillio - This application was built as a task for Vermillio.
